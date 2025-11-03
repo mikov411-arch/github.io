@@ -1,0 +1,500 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой крутой сайт</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Анимированная шапка */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #fff, 0 0 30px #e73c7e, 0 0 40px #e73c7e; }
+            to { text-shadow: 0 0 20px #fff, 0 0 30px #23a6d5, 0 0 40px #23a6d5; }
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* Основной контент */
+        .main-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.2s; }
+        .card:nth-child(2) { animation-delay: 0.4s; }
+        .card:nth-child(3) { animation-delay: 0.6s; }
+        .card:nth-child(4) { animation-delay: 0.8s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .card-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Интерактивные кнопки */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-special {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+        }
+
+        /* Анимированный прогресс-бар */
+        .skills {
+            margin: 50px 0;
+        }
+
+        .skill-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .skill-progress {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
+            background: linear-gradient(90deg, #23a6d5, #23d5ab);
+            border-radius: 5px;
+            width: 0;
+            transition: width 2s ease-in-out;
+        }
+
+        /* Футер */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.5em;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) rotate(10deg);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            animation: modalAppear 0.5s ease-out;
+        }
+
+        @keyframes modalAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.7) translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            .main-content { grid-template-columns: 1fr; }
+            .buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 300px; }
+        }
+
+        /* Частицы */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Анимированный фон частиц -->
+    <div id="particles-js"></div>
+
+    <div class="container">
+        <header>
+            <h1>🚀 Супер-сайт! 🚀</h1>
+            <p class="subtitle">Интерактивный, анимированный и просто космос!</p>
+        </header>
+
+        <div class="buttons">
+            <button class="btn" onclick="changeBackground()">🎨 Сменить фон</button>
+            <button class="btn" onclick="showMagic()">✨ Магия</button>
+            <button class="btn btn-special" onclick="showModal()">💎 Супер-кнопка</button>
+            <button class="btn" onclick="startConfetti()">🎉 Конфетти!</button>
+        </div>
+
+        <div class="main-content">
+            <div class="card">
+                <span class="card-icon">💻</span>
+                <h3>Веб-разработка</h3>
+                <p>Создаем современные и интерактивные веб-сайты с анимациями и эффектами</p>
+            </div>
+
+            <div class="card">
+                <span class="card-icon">📱</span>
+                <h3>Адаптивный дизайн</h3>
+                <p>Сайты, которые идеально выглядят на любых устройствах - от телефонов до компьютеров</p>
+            </div>
+
+            <div class="card">
+                <span class="card-icon">🎨</span>
+                <h3>Креативный подход</h3>
+                <p>Уникальный дизайн и инновационные решения для ваших проектов</p>
+            </div>
+
+            <div class="card">
+                <span class="card-icon">⚡</span>
+                <h3>Высокая скорость</h3>
+                <p>Оптимизированные сайты, которые загружаются мгновенно</p>
+            </div>
+        </div>
+
+        <div class="skills">
+            <h2 style="text-align: center; margin-bottom: 30px;">Мои навыки</h2>
+            <div class="skill-bar">
+                <div class="skill-name">
+                    <span>HTML/CSS</span>
+                    <span>95%</span>
+                </div>
+                <div class="skill-progress">
+                    <div class="skill-level" data-width="95"></div>
+                </div>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-name">
+                    <span>JavaScript</span>
+                    <span>85%</span>
+                </div>
+                <div class="skill-progress">
+                    <div class="skill-level" data-width="85"></div>
+                </div>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-name">
+                    <span>Python</span>
+                    <span>90%</span>
+                </div>
+                <div class="skill-progress">
+                    <div class="skill-level" data-width="90"></div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="social-links">
+                <a href="#" class="social-link">📘</a>
+                <a href="#" class="social-link">📷</a>
+                <a href="#" class="social-link">🐦</a>
+                <a href="#" class="social-link">💼</a>
+            </div>
+            <p>© 2024 Мой крутой сайт. Сделано с ❤️ и JavaScript</p>
+        </footer>
+    </div>
+
+    <!-- Модальное окно -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <h2>🎊 Ура! 🎊</h2>
+            <p>Вы обнаружили секретную функцию!</p>
+            <p>Это модальное окно с красивой анимацией.</p>
+            <button class="btn" onclick="closeModal()" style="margin-top: 20px;">Закрыть</button>
+        </div>
+    </div>
+
+    <script>
+        // Анимация прогресс-баров
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillLevels = document.querySelectorAll('.skill-level');
+            skillLevels.forEach(skill => {
+                const width = skill.getAttribute('data-width');
+                setTimeout(() => {
+                    skill.style.width = width + '%';
+                }, 500);
+            });
+        });
+
+        // Смена фона
+        function changeBackground() {
+            const colors = [
+                'linear-gradient(-45deg, #ff6b6b, #ee5a52, #ffa726, #ff9800)',
+                'linear-gradient(-45deg, #7e57c2, #5e35b1, #3949ab, #1e88e5)',
+                'linear-gradient(-45deg, #26a69a, #009688, #4caf50, #8bc34a)',
+                'linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)'
+            ];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.background = randomColor;
+        }
+
+        // Магические эффекты
+        function showMagic() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.animation = 'none';
+                    card.offsetHeight; // Trigger reflow
+                    card.style.animation = 'fadeInUp 0.5s ease-out';
+                    card.style.background = getRandomColor();
+                }, index * 200);
+            });
+        }
+
+        function getRandomColor() {
+            const colors = [
+                'rgba(255, 107, 107, 0.2)',
+                'rgba(126, 87, 194, 0.2)',
+                'rgba(38, 166, 154, 0.2)',
+                'rgba(255, 167, 38, 0.2)'
+            ];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // Модальное окно
+        function showModal() {
+            document.getElementById('myModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+        }
+
+        // Конфетти
+        function startConfetti() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57'];
+            for (let i = 0; i < 100; i++) {
+                createConfetti(colors[Math.floor(Math.random() * colors.length)]);
+            }
+        }
+
+        function createConfetti(color) {
+            const confetti = document.createElement('div');
+            confetti.style.position = 'fixed';
+            confetti.style.width = '10px';
+            confetti.style.height = '10px';
+            confetti.style.background = color;
+            confetti.style.borderRadius = '50%';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.top = '-10px';
+            confetti.style.zIndex = '9999';
+            document.body.appendChild(confetti);
+
+            const animation = confetti.animate([
+                { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                { transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+            ], {
+                duration: Math.random() * 3000 + 2000,
+                easing: 'cubic-bezier(0.1, 0.8, 0.3, 1)'
+            });
+
+            animation.onfinish = () => confetti.remove();
+        }
+
+        // Простые частицы
+        function createParticles() {
+            const container = document.getElementById('particles-js');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.width = Math.random() * 5 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.background = 'rgba(255, 255, 255, 0.5)';
+                particle.style.borderRadius = '50%';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                particle.style.animation = `float ${Math.random() * 10 + 10}s linear infinite`;
+                container.appendChild(particle);
+            }
+        }
+
+        // Создаем CSS для анимации частиц
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0% { transform: translate(0, 0) rotate(0deg); }
+                25% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(90deg); }
+                50% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(180deg); }
+                75% { transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(270deg); }
+                100% { transform: translate(0, 0) rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Инициализация
+        createParticles();
+    </script>
+</body>
+</html>
